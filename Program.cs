@@ -11,6 +11,7 @@ namespace SnakeLadderGame
         {
             Console.WriteLine("Welcome to Snake and Ladder Game");
             int position = 0;
+            int diceCount = 0;
             while (position < win)
             {
                 Random random = new Random();
@@ -37,6 +38,12 @@ namespace SnakeLadderGame
                     default:
                         break;
                 }
+                diceCount++;
+                Console.WriteLine("curr postion of player is " + position);
+            }
+            if (position == win)
+            {
+                Console.WriteLine("Player win the game with the total dice roll count is " + diceCount);
             }
         }
     }
