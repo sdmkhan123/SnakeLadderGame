@@ -19,7 +19,10 @@ namespace SnakeLadderGame
                 switch (checkOptions)
                 {
                     case ladder:
-                        position += diceOutcome;
+                        if (position + diceOutcome <= 100)
+                        {
+                            position += diceOutcome;
+                        }
                         break;
                     case snake:
                         if (position - diceOutcome < 0)
