@@ -10,40 +10,84 @@ namespace SnakeLadderGame
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake and Ladder Game");
-            int position = 0;
-            int diceCount = 0;
-            while (position < win)
+            int position1 = 0;
+            int position2 = 0;
+            bool playerOne = true;
+            bool playerTwo = false;
+            while (position1 < win && position2 <win)
             {
-                Random random = new Random();
-                int diceOutcome = random.Next(1, 7);
-                int checkOptions = random.Next(0, 3);
-                switch (checkOptions)
+                if (playerOne)
                 {
-                    case ladder:
-                        if (position + diceOutcome <= 100)
-                        {
-                            position += diceOutcome;
-                        }
-                        break;
-                    case snake:
-                        if (position - diceOutcome < 0)
-                        {
-                            position = 0;
-                        }
-                        else
-                        {
-                            position -= diceOutcome;
-                        }
-                        break;
-                    default:
-                        break;
+                    Random random = new Random();
+                    int diceOutcome = random.Next(1, 7);
+                    int checkOptions = random.Next(0, 3);
+                    switch (checkOptions)
+                    {
+                        case ladder:
+                            if (position1 + diceOutcome <= 100)
+                            {
+                                position1 += diceOutcome;
+                            }
+                            playerOne = true;
+                            break;
+                        case snake:
+                            if (position1 - diceOutcome < 0)
+                            {
+                                position1 = 0;
+                            }
+                            else
+                            {
+                                position1 -= diceOutcome;
+                            }
+                            playerTwo = true;
+                            playerOne = false;
+                            break;
+                        default:
+                            playerTwo = true;
+                            playerOne = false;
+                            break;
+                    };
                 }
-                diceCount++;
-                Console.WriteLine("curr postion of player is " + position);
+                else
+                {
+                    Random random = new Random();
+                    int diceOutcome = random.Next(1, 7);
+                    int checkOptions = random.Next(0, 3);
+                    switch (checkOptions)
+                    {
+                        case ladder:
+                            if (position2 + diceOutcome <= 100)
+                            {
+                                position2 += diceOutcome;
+                            }
+                            playerTwo = true;
+                            break;
+                        case snake:
+                            if (position2 - diceOutcome < 0)
+                            {
+                                position2 = 0;
+                            }
+                            else
+                            {
+                                position2 -= diceOutcome;
+                            }
+                            playerTwo = false;
+                            playerOne = true;
+                            break;
+                        default:
+                            playerTwo = false;
+                            playerOne = true;
+                            break;
+                    };
+                }
             }
-            if (position == win)
+            if (position1 > position2)
             {
-                Console.WriteLine("Player win the game with the total dice roll count is " + diceCount);
+                Console.WriteLine("PlayerOne won the game");
+            }
+            else
+            {
+                Console.WriteLine("PlayerTwo won the game");
             }
         }
     }
