@@ -10,10 +10,16 @@ namespace SnakeLadderGame
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake and Ladder Game");
+
+            //starting postion of both player
             int position1 = 0;
             int position2 = 0;
+
+            // initialize both player
             bool playerOne = true;
             bool playerTwo = false;
+
+            //iterate the loop till one of the player won the game
             while (position1 < win && position2 <win)
             {
                 if (playerOne)
@@ -28,6 +34,8 @@ namespace SnakeLadderGame
                             {
                                 position1 += diceOutcome;
                             }
+
+                            // if player one get ladder the player1 pllay again
                             playerOne = true;
                             break;
                         case snake:
@@ -60,6 +68,8 @@ namespace SnakeLadderGame
                             {
                                 position2 += diceOutcome;
                             }
+
+                            // id player one get ladder the player2 pllay again
                             playerTwo = true;
                             break;
                         case snake:
